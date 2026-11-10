@@ -1,0 +1,12 @@
+# Dependências do ADAM — versão publicada no Streamlit Community Cloud
+streamlit>=1.36
+pandas>=2.0
+openpyxl>=3.1
+xlsxwriter>=3.2
+plotly>=5.20
+requests>=2.31
+Pillow>=10.0
+# Google Sheets: usado pela telemetria e pelo cadastro voluntário.
+# Sem credencial, o app segue funcionando — as duas rotinas falham em silêncio.
+gspread>=6.0
+google-auth>=2.28

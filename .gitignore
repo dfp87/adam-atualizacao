@@ -1,0 +1,26 @@
+# Credenciais e segredos — nunca versionar
+.streamlit/secrets.toml
+secrets.toml
+*.pem
+*.key
+.env
+.env.*
+credenciais*.json
+*service-account*.json
+
+# Dados e saídas locais
+*.xlsx
+*.csv
+*.zip
+logs/
+*.log
+
+# Ambiente e artefatos do Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
