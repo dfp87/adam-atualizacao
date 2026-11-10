@@ -53,6 +53,10 @@ Streamlit Community Cloud: mesma regra de cálculo, mesma API do TCU, com as dua
 versão (vídeo e painel de estatísticas).
 
 Mudança de regra ou de cálculo entra primeiro no Atende e é replicada aqui — não o contrário.
+O que esta cópia acrescenta é a página pública de demonstração; o que ela **não** tem é login, auditoria e
+atestado com hash, que só existem no canônico.
+
+- Publicação: `https://github.com/dfp87/adam-atualizacao` · app `adam-atualizacao.streamlit.app`
 
 ## Créditos
 
