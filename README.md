@@ -58,6 +58,25 @@ atestado com hash, que só existem no canônico.
 
 - Publicação: `https://github.com/dfp87/adam-atualizacao` · app `adam-atualizacao.streamlit.app`
 
+## Provas e decisões de projeto
+
+- **Licença:** MIT (`LICENSE`).
+- **Decisões de arquitetura (ADRs)** em `docs/adr/` — o motor de cálculo (por que não reimplementar a
+  regra), o atestado da execução (por que prova por hash) e a separação entre núcleo e interface.
+- **Atestado com hash** só existe no projeto canônico (Atende Contábil): esta cópia pública documenta o
+  desenho no ADR002, mas não emite atestado.
+
+## Testes
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+23 testes, sem dependência de interface. Os que dependem de `pandas` são pulados automaticamente quando
+a biblioteca não está no interpretador. O que eles cobrem é justamente o que erra em silêncio numa
+planilha: acento, separador, formato de número, data no nome do arquivo, determinismo da impressão
+digital — e um teste que documenta o limite conhecido de `hash_parcial` (não é prova de integridade).
+
 ## Créditos
 
 Fonte: Webservice de Dados Abertos do TCU · Licença Open Database License (ODbL).
