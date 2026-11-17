@@ -21,8 +21,13 @@ from pathlib import Path
 BLOCO = 64 * 1024
 
 
-def hash_parcial(caminho: Path, limite: int = 2 * 1024 * 1024) -> str:
-    """Hash do arquivo: inteiro se for pequeno, do começo e do fim se for grande."""
+def impressao_incremental(caminho: Path, limite: int = 2 * 1024 * 1024) -> str:
+    """Impressão digital incremental: serve para decidir se vale reprocessar o arquivo.
+
+    NÃO é prova de integridade: usa SHA-1 truncado em 16 caracteres e, acima de `limite`,
+    lê apenas o começo e o fim — dois arquivos que diferem só no meio colidem. Para provar
+    autoria ou integridade, use SHA-256 sobre o conteúdo completo (ver ADR002 do ADAM).
+    """
     tamanho = os.path.getsize(caminho)
     digestor = hashlib.sha1()
     with open(caminho, "rb") as f:
@@ -86,7 +91,7 @@ class Indice:
 
 def impressao(caminho: Path, com_hash: bool = True) -> tuple[int, int, str]:
     info = caminho.stat()
-    return info.st_size, int(info.st_mtime), (hash_parcial(caminho) if com_hash else "")
+    return info.st_size, int(info.st_mtime), (impressao_incremental(caminho) if com_hash else "")
 
 
 def precisa_processar(caminho: Path, raiz: Path, registros: dict[str, dict],
