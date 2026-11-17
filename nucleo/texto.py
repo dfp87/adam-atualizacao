@@ -15,7 +15,7 @@ from datetime import date, datetime
 
 __all__ = ["sem_acentos", "chave_nome", "normalizar_numero_processo",
            "extrair_data_de_nome_de_arquivo", "para_numero", "nome_servidor",
-           "nome_servidor_sem_pontuacao"]
+           "nome_servidor_padronizado"]
 
 # meses em português, para nomes de arquivo como "relatorio-jan-2026.pdf"
 MESES = {"jan": 1, "fev": 2, "mar": 3, "abr": 4, "mai": 5, "jun": 6,
@@ -103,7 +103,7 @@ def nome_servidor(valor) -> str:
     return sem_acentos(valor).upper().strip()
 
 
-def nome_servidor_sem_pontuacao(valor) -> str:
+def nome_servidor_padronizado(valor) -> str:
     """Nome de servidor limpo para exibição/agrupamento: mantém acento, tira pontuação.
 
     Era o `limpar_nome()` do `gerar_base_servidores_unicos.py`: espaços colapsados,
